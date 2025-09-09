@@ -143,7 +143,8 @@ const AdminPanel = () => {
           duration: 0,
           equipment: [''],
           steps: [{ step: 1, instruction: '', duration: 0 }],
-          featured: false
+          featured: false,
+          videoUrl: '' // Updated field name to match backend
         };
       default:
         return {};
@@ -543,7 +544,47 @@ const renderFormFields = (tab, formData, setFormData) => {
           </label>
         </div>
       );
-    
+    case 'tutorials':
+      return (
+        <div className="form-fields">
+          <input
+            type="text"
+            placeholder="Tutorial Title"
+            value={formData.title || ''}
+            onChange={(e) => updateField('title', e.target.value)}
+            required
+          />
+          <textarea
+            placeholder="Description"
+            value={formData.description || ''}
+            onChange={(e) => updateField('description', e.target.value)}
+            required
+          />
+          <input
+            type="text"
+            placeholder="YouTube Video URL"
+            value={formData.videoUrl || ''}
+            onChange={(e) => updateField('videoUrl', e.target.value)}
+            required
+          />
+          <select
+            value={formData.category || 'Strength'}
+            onChange={(e) => updateField('category', e.target.value)}
+          >
+            <option value="Strength">Strength</option>
+            <option value="Cardio">Cardio</option>
+            <option value="Flexibility">Flexibility</option>
+          </select>
+          <select
+            value={formData.difficulty || 'Beginner'}
+            onChange={(e) => updateField('difficulty', e.target.value)}
+          >
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+        </div>
+      );
     default:
       return <div>Form fields for {tab} coming soon...</div>;
   }

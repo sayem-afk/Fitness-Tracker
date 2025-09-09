@@ -124,16 +124,17 @@
 }
 
 .tutorial-card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .tutorial-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .tutorial-thumbnail {
@@ -385,6 +386,19 @@
 .no-results h3 {
   color: #333;
   margin-bottom: 0.5rem;
+}
+
+.tutorial-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #1d4ed8;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.tutorial-link:hover {
+  text-decoration: underline;
+  color: #2563eb;
 }
 
 /* Enhanced Responsive Design */

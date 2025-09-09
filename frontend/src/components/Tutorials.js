@@ -250,6 +250,17 @@ const Tutorials = () => {
                   <span className="views-count">{tutorial.views} views</span>
                   <span className="steps-count">{tutorial.steps.length} steps</span>
                 </div>
+
+                {tutorial.videoUrl && (
+                  <a
+                    href={tutorial.videoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="tutorial-link"
+                  >
+                    Watch Tutorial
+                  </a>
+                )}
               </div>
             </div>
           ))}
