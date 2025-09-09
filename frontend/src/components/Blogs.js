@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Blogs.css';
 
 const Blogs = () => {
@@ -9,6 +10,7 @@ const Blogs = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
   const [likedBlogs, setLikedBlogs] = useState(new Set());
+  const navigate = useNavigate();
 
   const categories = ['All', 'Nutrition', 'Training', 'Wellness', 'Equipment'];
 
@@ -57,6 +59,10 @@ const Blogs = () => {
     } catch (error) {
       console.error('Error liking blog:', error);
     }
+  };
+
+  const handleReadMore = (blogId) => {
+    navigate(`/blogs/${blogId}`);
   };
 
   const filteredBlogs = blogs.filter(blog => {
@@ -186,7 +192,12 @@ const Blogs = () => {
                       </button>
                       <span className="comments-count">💬 {blog.comments}</span>
                     </div>
-                    <button className="read-more-btn">Read More</button>
+                    <button 
+                      className="read-more-btn"
+                      onClick={() => handleReadMore(blog._id)}
+                    >
+                      Read More
+                    </button>
                   </div>
                 </div>
               </div>
