@@ -50,6 +50,14 @@ const getTutorialById = async (req, res) => {
 // Create new tutorial (Admin only)
 const createTutorial = async (req, res) => {
   try {
+    const { link } = req.body;
+
+    // Validate YouTube link
+    const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/(watch\?v=)?[\w-]{11}$/;
+    if (link && !youtubeRegex.test(link)) {
+      return res.status(400).json({ message: 'Invalid YouTube link' });
+    }
+
     const tutorial = new Tutorial(req.body);
     const savedTutorial = await tutorial.save();
     res.status(201).json(savedTutorial);
